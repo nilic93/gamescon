@@ -1,0 +1,62 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card card-user">
+      <div class="image"></div>
+      <div class="content">
+        <div class="login-providers" *ngIf="profile.userFoundOnGigya">
+          <p class="login-providers__text">Logged in with:</p>
+          <div
+            *ngIf="profile.socialProviders.includes('site')"
+            (click)="sendEmail()"
+            class="login-providers__mail-icon"
+            title="Click here to send mail to this user..."
+          ></div>
+          <div
+            *ngIf="profile.socialProviders.includes('facebook')"
+            [title]="profile.profileURL?'Click here to see user facebook profile...':'No profile available'"
+            [style.cursor]="profile.profileURL ? 'pointer' : ''"
+            class="login-providers__fb-icon"
+            (click)="showUsersFacebookProfile()"
+          ></div>
+          <p
+            *ngIf="!profile.socialProviders.includes('site')"
+            class="login-providers__text login-providers__text--warning"
+          >
+            (not completed profile)
+          </p>
+        </div>
+
+        <div class="author">
+          <img
+            class="avatar border-white"
+            [src]="profile.photoURL || 'assets/img/gameroom.png'"
+            alt="Anonymous Gameroom player"
+          />
+          <h4 *ngIf="profile.userFoundOnGigya" class="title">
+            {{
+              profile.firstName && profile.lastName
+                ? profile.firstName + ' ' + profile.lastName
+                : 'Anonymous Gameroom player'
+            }}
+            <br />
+          </h4>
+        </div>
+      </div>
+      <hr />
+      <div class="text-left">
+        <div class="content">
+          <div *ngIf="profile.userFoundOnGigya">
+            <p><strong> Created : </strong> {{ profile.createdOn }}</p>
+            <p [title]="profile.email"><strong>Email : </strong> {{ profile.email }}</p>
+            <p><strong> Won episodes : </strong> {{ profile.wonEpisodesCount }}</p>
+            <p><strong>Total amount won : </strong> <span>&#8364;</span>{{ profile.totalAmountWon }}</p>
+          </div>
+          <div *ngIf="!profile.userFoundOnGigya">
+            <p>NO USER FOUND</p>
+            <p>for {{ profile.email }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

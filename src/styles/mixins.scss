@@ -1,0 +1,35 @@
+@import '../styles/variables';
+
+@mixin icon($url: null) {
+  background-image: if($url, url($url), none);
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+
+@mixin sign {
+  display: flex;
+  flex-direction: row;
+  height: 40px;
+  color: $platform-button-non-active;
+  font-size: 20px;
+  float: right;
+  padding: 4px 8px;
+}
+
+@mixin init-wrapper {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin filter {
+  padding: 8px 0;
+  font-size: 15px;
+  display: flex;
+  width: 92px;
+  color: $text-default;
+  flex-direction: row;
+  height: 40px;
+}

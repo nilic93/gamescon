@@ -1,0 +1,29 @@
+@import '../../../../styles/mixins';
+
+.modal {
+  &-header {
+    min-height: 50px;
+  }
+
+  &-title {
+    line-height: 15px;
+    padding-top: 3px;
+  }
+
+  &-body {
+    width: 75vw;
+    height: 65vh;
+  }
+}
+
+.table-prize {
+  border: none;
+  max-width: 300px;
+
+  & tbody {
+    & td {
+      border: none;
+      padding: 3px;
+    }
+  }
+}

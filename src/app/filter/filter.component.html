@@ -1,0 +1,15 @@
+<div class="container-fluid">
+  <cmp-filter-input (paramsInputed)="onParamsInputed($event)"></cmp-filter-input>
+  <loader-cmp *ngIf="loading" [loadingMessage]="'Filtering the data'" ></loader-cmp>
+  <div class="row" *ngIf="!loading && filterResultsTableConfig">
+    <div class="col-md-12">
+      <div class="card">
+        <table-cmp
+          [tableConfig]="filterResultsTableConfig"
+          (columnHeaderClicked)="sortTable($event)"
+          (exportData)="onExportTableData($event)"
+        ></table-cmp>
+      </div>
+    </div>
+  </div>
+</div>

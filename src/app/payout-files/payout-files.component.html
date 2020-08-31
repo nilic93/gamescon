@@ -1,0 +1,15 @@
+<div class="container-fluid">
+    <date-input-cmp (dateInputed)="fetchpayoutFilesInfo($event)"></date-input-cmp>
+</div>
+<hr>
+<loader-cmp *ngIf="isLoading" loadingMessage="Getting payout files"></loader-cmp>
+
+<div class="container-fluid">
+    <div class="card" *ngIf="!isLoading && payoutFilesTableConfig && !gotEmptyResponse">
+        <table-cmp (cellActionTriggered)="onDownloadPayoutFile($event)" [tableConfig]="payoutFilesTableConfig"></table-cmp>
+    </div>
+    
+    <div class="card" *ngIf="gotEmptyResponse" [ngStyle]="{'padding': '15px'}">
+        <p [ngStyle]="{'margin': '0'}">Files not found for {{getLastDateSelection()}}</p>
+    </div>
+</div>

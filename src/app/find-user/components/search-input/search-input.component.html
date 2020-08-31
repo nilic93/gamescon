@@ -1,0 +1,77 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="content">
+            <form [formGroup]="searchFormGroup" (ngSubmit)="onSubmit()">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown">
+                                    <div class="search-container">
+                                        <div class="search-by">Search by</div>
+                                        <div class="search-type">{{inputParameters[0].searchTypeDisplay}}</div>
+                                        <div class="caret-wrapper">
+                                            <b class="caret"></b>
+                                        </div>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a (click)="updateValidation('byEmail', 0)">Email</a></li>
+                                    <li><a (click)="updateValidation('byBankAccount', 0)">Bankaccount</a></li>
+                                    <li><a (click)="updateValidation('byPaypal', 0)">Paypal mail</a></li>
+                                </ul>
+                            </div>
+                            <input class="form-control border-input inputs-1"
+                                   placeholder="Give user's email / bankaccount / paypal"
+                                   formControlName="searchInput{{0}}">
+                        </div>
+                        <div class="error-wrapper">
+                            <label *ngIf="searchFormGroup.get('searchInput0').invalid && searchFormGroup.touched">{{getInputErrorMessage(0)}}</label>
+                        </div>
+                        <div *ngIf=secondInputExist class="form-group">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown">
+                                    <div class="search-container">
+                                        <div class="search-by">Search by</div>
+                                        <div class="search-type">{{inputParameters[1].searchTypeDisplay}}</div>
+                                        <div class="caret-wrapper">
+                                            <b class="caret"></b>
+                                        </div>
+                                    </div>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a (click)="updateValidation('byEmail',1)">Email</a></li>
+                                    <li><a (click)="updateValidation('byBankAccount',1)">Bankaccount</a></li>
+                                    <li><a (click)="updateValidation('byPaypal',1)">Paypal mail</a></li>
+                                </ul>
+                            </div>
+                            <input class="form-control border-input inputs-2"
+                                   placeholder="Give user's email / bankaccount / paypal"
+                                   formControlName="searchInput{{1}}">
+                            <div class="wrapper-remove" (click)="removeSecondFilter()">
+                                <div class="remove-filter">Remove filter</div>
+                                <div class="sign">-</div>
+                            </div>
+
+                        </div>
+                        <div *ngIf=!secondInputExist class="add-input">
+                            <div class="wrapper-add" (click)="addSecondFilter()">
+                                <div class="add-filter">Add filter</div>
+                                <div class="sign">+</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="error-wrapper">
+                    <div *ngIf=secondInputExist>
+                        <label *ngIf="searchFormGroup.get('searchInput1').invalid && searchFormGroup.touched">{{getInputErrorMessage(1)}}</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-info btn-fill" (click)="unFocus($event)"
+                        [disabled]="!searchFormGroup.valid">
+                    Start search
+                </button>
+            </form>
+        </div>
+    </div>
+</div>

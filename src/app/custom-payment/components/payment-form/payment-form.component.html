@@ -1,0 +1,69 @@
+<div class="form-wrapper">
+    <form [formGroup]="paymentFormGroup" (ngSubmit)="onSubmit()">
+        <p class="input-title"> Emailaddress </p>
+
+        <input class="form-control border-input input-design"
+               formControlName="email">
+        <div class="error-wrapper">
+            <label *ngIf="paymentFormGroup.get('email').invalid
+                     && paymentFormGroup.touched">
+                {{getInputErrorMessage("email")}}
+            </label>
+        </div>
+
+        <p class="input-title"> Prizemoney </p>
+        <input class="form-control border-input input-design"
+               formControlName="prizeMoney">
+        <div class="error-wrapper">
+            <label *ngIf="paymentFormGroup.get('prizeMoney').invalid
+                     && paymentFormGroup.touched">
+                {{getInputErrorMessage("prizeMoney")}}
+            </label>
+        </div>
+
+        <p class="input-title"> Tax </p>
+        <input class="form-control border-input input-design"
+               formControlName="tax">
+        <div class="error-wrapper">
+            <label *ngIf="paymentFormGroup.get('tax').invalid
+                     && paymentFormGroup.touched">
+                {{getInputErrorMessage("tax")}}
+            </label>
+        </div>
+
+        <p class="input-title"> Format </p>
+        <div class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+                <div class="game-format">
+                    {{gameFormat | gameFormatDisplay }}
+                    <b class="caret"></b>
+                </div>
+            </a>
+            <ul class="dropdown-menu">
+                <li *ngFor="let format of gameFormatArray"><a (click)="updateGameFormat(format)">{{format | gameFormatDisplay }}</a></li>
+            </ul>
+        </div>
+        <div class="error-wrapper">
+            <label *ngIf="paymentFormGroup.get('format').invalid
+                     && paymentFormGroup.touched">
+                {{getInputErrorMessage("format")}}
+            </label>
+        </div>
+        <p class="input-title"> Episode </p>
+        <input class="form-control border-input input-design"
+               formControlName="episode">
+        <div class="error-wrapper">
+            <label *ngIf="paymentFormGroup.get('episode').invalid
+                     && paymentFormGroup.touched">
+                {{getInputErrorMessage("episode")}}
+            </label>
+        </div>
+
+        <button type="submit"
+                class="btn btn-info btn-fill"
+                [disabled]="!paymentFormGroup.valid">
+            Add payout
+        </button>
+    </form>
+</div>
+

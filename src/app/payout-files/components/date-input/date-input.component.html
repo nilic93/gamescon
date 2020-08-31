@@ -1,0 +1,46 @@
+<div class="date-input">
+  <div class="year">
+    <label for="year">Year: </label>
+    <div class="dropdown">
+      <div class="dropdown-toggle" data-toggle="dropdown">
+        <b class="caret"></b>
+        <span>{{currentSelect.year || 'any'}}</span>
+      </div>
+      <ul class="dropdown-menu">
+        <li (click)="onYearSelect('any')"><a>any</a></li>
+        <li *ngFor="let year of years" (click)="onYearSelect(year)"><a>{{year}}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div [ngClass]="currentSelect.year ? '' :'dropdown--disabled'">
+    <label for="month">Month: </label>
+    <div class="dropdown">
+      <div class="dropdown-toggle" data-toggle="dropdown">
+        <b class="caret"></b>
+        <span>{{getMonthName()}}</span>
+      </div>
+      <ul class="dropdown-menu">
+        <li (click)="onMonthSelect('any')"><a>any</a></li>
+        <li *ngFor="let month of months; let monthIndex=index" (click)="onMonthSelect(monthIndex)"><a>{{month}}</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div [ngClass]="currentSelect.month || currentSelect.month === 0 ? '' :'dropdown--disabled'">
+    <label for="day">Day: </label>
+    <div class="dropdown">
+      <div class="dropdown-toggle" data-toggle="dropdown">
+        <b class="caret"></b>
+        <span>{{currentSelect.day || 'any'}}</span>
+      </div>
+      <ul class="dropdown-menu">
+        <li (click)="onDaySelect('any')"><a>any</a></li>
+        <li *ngFor="let day of days" (click)="onDaySelect(day)"><a>{{day}}</a></li>
+      </ul>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-info btn-fill" (click)="onSubmit($event)">
+    Start search
+  </button>
+</div>

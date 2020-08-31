@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+
+.logo {
+  padding: 14px 48px 12px 15px;
+  margin: 0 10px;
+  height: 75px;
+}
+li.active > a {
+  color: $platform-button-active;
+  &:after {
+    border-right: 17px solid $platform-background-all;
+  }
+}
+
+.sidebar-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.logout {
+  margin: 0 auto 20px;
+
+  & button {
+    border-radius: 3px;
+    min-width: 150px;
+    background-color: $platform-button-active;
+    border-color: $platform-button-active;
+  }
+  & button:hover {
+    background-color: $platform-button-hover;
+    border-color: $platform-button-hover;
+  }
+
+}

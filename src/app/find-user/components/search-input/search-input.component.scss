@@ -1,0 +1,104 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/mixins.scss';
+
+.form-group {
+  display: flex;
+  margin-bottom: 2px;
+  & .inputs-1 {
+    border-radius: 0px 3px 3px 0px;
+  }
+  & .inputs-2 {
+    border-right: none;
+  }
+  & .wrapper-remove {
+    @include init-wrapper;
+    background-color: #fff;
+    border: 1px solid #CCC5B9;
+    border-radius: 0px 3px 3px 0px;
+    border-left: none;
+    width: 130px;
+    cursor: pointer;
+    height: 40px;
+    & .remove-filter {
+      @include filter
+    }
+    & .sign {
+      @include sign
+    }
+  }
+}
+
+.error-wrapper {
+  width: 100%;
+  height: 20px;
+  color: $platform-error;
+}
+
+.add-input {
+  height: 40px;
+  width: 100%;
+  margin-bottom: 2px;
+  & .wrapper-add {
+    @include init-wrapper;
+    float: right;
+    width: 100px;
+    height: 40px;
+    & .add-filter {
+      @include filter
+    }
+    & .sign {
+      @include sign
+    }
+  }
+}
+
+.border-input {
+  border-radius: 0;
+}
+
+.btn-info {
+  margin-bottom: 20px;
+  background-color: $platform-button-active;
+  border-color: $platform-button-active;
+  color: $cream;
+  border-radius: 3px;
+  float: right;
+  width: 150px;
+  & .ti-search {
+    pointer-events: none;
+  }
+  &:hover {
+    background-color: $platform-button-hover;
+    border-color: $platform-button-hover;
+  }
+}
+
+.dropdown {
+  height: 40px;
+  border: 2px solid $platform-background-light;
+  border-radius: 3px 0 0 3px;
+  & .search-container {
+    display: flex;
+    width: 200px;
+    cursor: pointer;
+    height: 38px;
+    padding: 7px 0px 7px 7px;
+    font-size: 15px;
+    & .search-by {
+      width: 80px;
+      color: #66615B;
+    }
+    & .search-type {
+      width: 95px;
+      color: $platform-button-non-active;
+    }
+    & .caret-wrapper {
+      color: $platform-button-non-active;
+    }
+  }
+  & .dropdown-menu > li > a:hover {
+    background-color: $platform-background-light;
+    color: white;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,10 @@
+<div [style.padding]="'15vh 0 0 0'" *ngIf="!auth.loading">
+  <login-form-cmp *ngIf="!auth.isNewPasswordRequired"></login-form-cmp>
+  <new-password-form-cmp *ngIf="auth.isNewPasswordRequired"></new-password-form-cmp>
+
+  <div class="col-md-6 col-md-offset-3" *ngIf="auth.authError">
+    <notification-card-cmp [message]="auth.authError.message"></notification-card-cmp>
+  </div>
+</div>
+
+<loader-cmp *ngIf="auth.loading" [loadingMessage]="'Connecting you to the Gamescon'"></loader-cmp>

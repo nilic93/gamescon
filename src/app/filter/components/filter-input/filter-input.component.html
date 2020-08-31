@@ -1,0 +1,45 @@
+<div class="content">
+    <form [formGroup]="filterFormGroup" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <div class="range">
+                <div class="filter-title">
+                    <p> Won episodes </p>
+                </div>
+                <input type="number" (input)="checkEpisodes($event, true)" class="form-control border-input first-field" placeholder="1"
+                       formControlName="minEpisodes">
+                <div class="middle">
+                    <p> to </p>
+                </div>
+                <input type="number" (input)="checkEpisodes($event, false)" class="form-control border-input second-field" placeholder="100"
+                       formControlName="maxEpisodes">
+            </div>
+            <div class="range">
+                <div class="filter-title">
+                    <p> Prize money </p>
+                </div>
+                <div class="euro-sign">
+                    <div class="euro" [ngStyle]="{'opacity': (lastValidPrizeMin === '') ? '0.3': '1'}">&#8364;</div>
+                </div>
+                <input (input)="checkPrize($event,true)" (blur)="formatDecimals($event,true)"class="form-control border-input first-field second-raw-1" placeholder="0"
+                       formControlName="minPrize">
+                <div class="middle">
+                    <p> to </p>
+                </div>
+                <div class="euro-sign second-sign">
+                    <div class="euro" [ngStyle]="{'opacity': (lastValidPrizeMax === '') ? '0.3': '1'}">&#8364;</div>
+                </div>
+                <input (input)="checkPrize($event,false)" (blur)="formatDecimals($event,false)"class="form-control border-input second-field second-raw-2" placeholder="1000"
+                       formControlName="maxPrize">
+            </div>
+            <div class="error-wrapper">
+                <label *ngIf="filterFormGroup.touched">{{getInputErrorMessage()}}</label>
+            </div>
+            <div class="start-search">
+                <button type="submit" (click)="blurOnClick($event)" class="btn btn-info btn-fill"
+                        [disabled]="!filterFormGroup.valid">
+                    Start search
+                </button>
+            </div>
+        </div>
+    </form>
+</div>

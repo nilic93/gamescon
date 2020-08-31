@@ -1,0 +1,56 @@
+@import './../../../../styles/variables.scss';
+
+.dropdown {
+  border: 2px solid $platform-background-light;
+  border-radius: 3px;
+  margin-right: 20px;
+  cursor: pointer;
+  user-select: none;
+  min-width: 100px;
+  
+  &-toggle {
+    color: $platform-background-light;
+    padding: 5px;
+  }
+
+  & .dropdown-menu > li > a:hover {
+    background-color: $platform-background-light;
+    color: white;
+    cursor: pointer;
+  }
+
+  & .dropdown-menu {
+    max-height: 60vh;
+    overflow-y: auto;
+  }
+
+  &--disabled {
+    pointer-events: none;
+    opacity: 0.4;
+  }
+}
+
+.caret {
+  margin-right: 5px;
+}
+
+.date-input {
+  display: flex;
+  flex-direction: row;
+}
+
+.btn-info {
+  margin: 24px 0 0;
+  background-color: $platform-button-active;
+  border-color: $platform-button-active;
+  color: $cream;
+  border-radius: 3px;
+  border-width: 1px;
+  width: 150px;
+  height: 33px;
+  
+  &:hover {
+    background-color: $platform-button-hover;
+    border-color: $platform-button-hover;
+  }
+}

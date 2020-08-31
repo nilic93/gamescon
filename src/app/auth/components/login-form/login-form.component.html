@@ -1,0 +1,47 @@
+<div class="login">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="card">
+      <div class="content">
+        <div class="row"></div>
+        <div class="login__header">
+          <div class="login__header__icon"></div>
+          <h2 class="login__header__text">Login</h2>
+        </div>
+        <form [formGroup]="loginFormGroup" (ngSubmit)="onLogin()">
+          <label for="email"><strong>Email</strong></label>
+          <input
+            name="email"
+            class="form-control border-input"
+            placeholder="email"
+            formControlName="email"
+            type="email"
+          />
+          <div class="error-wrapper">
+            <label class="error-wrapper__message" for="password" *ngIf="shouldDisplayError('email')">{{ getEmailInputError() }} </label>
+          </div>
+          <label for="password"><strong>Password</strong></label>
+          <input
+            name="password"
+            class="form-control border-input"
+            type="password"
+            placeholder="password"
+            formControlName="password"
+          />
+          <div class="error-wrapper">
+            <label class="error-wrapper__message" for="password" *ngIf="shouldDisplayError('password')">{{ getPasswordInputError() }} </label>
+          </div>
+          <div class="pull-right">
+            <button type="submit" class="btn btn-info" [disabled]="!loginFormGroup.touched">
+              <div class="login__button">
+                <div class="login__button__icon"></div>
+                <div>Login</div>
+              </div>
+            </button>
+          </div>
+        </form>
+        <br />
+        <br />
+      </div>
+    </div>
+  </div>
+</div>

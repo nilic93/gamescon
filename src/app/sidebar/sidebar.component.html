@@ -1,0 +1,19 @@
+<div class="sidebar-wrapper">
+  <div class="navigation">
+    <div class="logo">
+      <a routerLink="/">  </a>
+    </div>
+    <ul class="nav">
+      <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
+        <a [routerLink]="['/dashboard', menuItem.path]">
+          <i class="{{menuItem.icon}}"></i>
+          <p>{{ menuItem.title }}</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="logout">
+      <button class="btn btn-info btn-fill" (click)="auth.logout()">Logout</button>
+  </div>
+</div>

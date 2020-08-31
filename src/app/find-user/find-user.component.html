@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <search-input-cmp (paramsInputed)="onInputed($event)"></search-input-cmp>
+    <loader-cmp *ngIf="isLoading" [loadingMessage]="'Searching your user'" ></loader-cmp>
+    <div *ngIf="isDataRetrived && !isLoading">
+        <user-profile-card-cmp *ngIf="visibleCard" [profile]="userProfile"></user-profile-card-cmp>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card" *ngIf="!userData.length"><p class="no-episodes">NO WON EPISODES</p></div>
+                <div class="card" *ngIf="userData.length">
+                    <table-cmp
+                            [tableConfig]="userPaymentDataTableConfig"
+                            (rowClicked)="showPaymentDetails($event)"
+                            (columnHeaderClicked)="sortTable($event)"
+                            (exportData)="onExportTableData($event)"
+                            (pagingChanged)="onPagingChanged($event)"
+                    ></table-cmp>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid" *ngIf="!isDataRetrived && !isLoading && searchHistory.length">
+    <div class="card">
+        <table-cmp [tableConfig]="searchHistoryTableConfig"
+                   (rowClicked)="setSearchInputFromHistory($event)"></table-cmp>
+    </div>
+</div>

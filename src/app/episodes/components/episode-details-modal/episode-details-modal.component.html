@@ -1,0 +1,61 @@
+<div class='modal-header'>
+    <h4 class='modal-title pull-left'>Episode details</h4>
+    <button type='button' class='close pull-right' aria-label='Close' (click)='bsModalRef.hide()'>
+      <span aria-hidden='true'>&times;</span>
+    </button>
+  </div>
+  <div class='modal-body'>
+
+    <table class='table table-prize'>
+      <tbody>
+        <tr>
+          <strong>
+            <td>
+              {{episodeDetails.episodeID}} -
+              {{episodeDetails.totalAmount}}
+            </td>
+          </strong>
+        </tr>
+        <tr>
+          <td>
+            {{episodeDetails.date}}
+          </td>
+          <td>
+            {{episodeDetails.time}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            LUCKY13
+            (<span>&#8364;</span>{{prizeData.lucky13.amount}})
+          </td>
+          <td>
+            {{prizeData.lucky13.count}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            DOUBLE13
+            (<span>&#8364;</span>{{prizeData.double13.amount}})
+          </td>
+          <td>
+            {{prizeData.double13.count}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <table-cmp
+            [tableConfig]="tableConfig"
+            (rowClicked)="showWinnersPaymentDetails($event)"
+            (columnHeaderClicked)="sortTable($event)"
+            (exportData)="onExportTableData($event)"
+            (pagingChanged)="onPagingChanged($event)"
+          ></table-cmp>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,4 @@
+<cmp-payment-form *ngIf="!gigyaLoaderActive && !validationPage"  (formSubmitted)="onInputedData()" ></cmp-payment-form>
+<loader-cmp *ngIf="gigyaLoaderActive"  [loadingMessage]="'Checking user on Gigya'"> </loader-cmp>
+<cmp-payment-validation *ngIf="validationPage && !sendingData" (returnToFirstPage)="returnToForm()" (sendPayoutRequest)="sendPayout()" ></cmp-payment-validation>
+<loader-cmp *ngIf="sendingData"  [loadingMessage]="'Sending data to DynamoDB'"> </loader-cmp>

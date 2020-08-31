@@ -1,0 +1,21 @@
+.container-loader {
+  width: 100%;
+  padding: 20px;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  & .loader-wrapper {
+    height: 50px;
+  }
+  & .loader-title {
+    text-align: center;
+    font-size: 20px;
+    color: #66615b;
+  }
+
+}
+
+
