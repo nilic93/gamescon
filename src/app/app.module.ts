@@ -21,6 +21,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpConfigInterceptor} from './interceptors/httpconfig.interceptor';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import {HomeModule} from './home/home.module';
 
 @NgModule({
     declarations: [
@@ -37,6 +38,7 @@ import { HashLocationStrategy, LocationStrategy } from '@angular/common';
         CustomPaymentModule,
         TetrisModule,
         AuthModule,
+        HomeModule
     ],
     providers: [AuthService,
         StorageService,

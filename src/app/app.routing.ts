@@ -4,6 +4,7 @@ import { AuthComponent } from './auth/auth.component';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { AuthGuard } from './guards/auth/auth.guard';
 import { CustomPaymentComponent } from './custom-payment/custom-payment.component';
+import {HomeComponent} from './home/home.component';
 
 export const AppRoutes: Routes = [
   {
@@ -23,13 +24,18 @@ export const AppRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'customPayment',
-        component: CustomPaymentComponent,
-        canActivate: [AuthGuard]
+        path: 'home',
+        component: HomeComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: 'tetris',
         component: TetrisComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'customPayment',
+        component: CustomPaymentComponent,
         canActivate: [AuthGuard]
       }
     ]
