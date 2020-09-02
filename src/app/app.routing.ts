@@ -1,5 +1,5 @@
 import { Routes, PRIMARY_OUTLET } from '@angular/router';
-import { FindUserComponent } from './find-user/find-user.component';
+import { TetrisComponent } from './tetris/tetris.component';
 import { AuthComponent } from './auth/auth.component';
 import { DashboardLayoutComponent } from './dashboard-layout/dashboard-layout.component';
 import { AuthGuard } from './guards/auth/auth.guard';
@@ -23,13 +23,13 @@ export const AppRoutes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {
-        path: 'findUser',
-        component: FindUserComponent,
+        path: 'customPayment',
+        component: CustomPaymentComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: 'customPayment',
-        component: CustomPaymentComponent,
+        path: 'tetris',
+        component: TetrisComponent,
         canActivate: [AuthGuard]
       }
     ]

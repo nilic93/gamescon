@@ -10,9 +10,9 @@ export interface RouteInfo {
 
 // TODO: Uncomment theese objects when implementation of dashboard and statistics pages is needed.
 export const ROUTES: RouteInfo[] = [
-
-  { path: 'findUser', title: 'Find user', icon: 'ti-user', class: '' },
-  { path: 'customPayment', title: 'Custom payment', icon: 'ti-money', class: '' }
+  { path: 'dashboard', title: 'Dashboard', icon: 'ti-tablet', class: '' },
+  { path: 'tetris', title: 'Tetris', icon: 'ti-tablet', class: '' },
+  { path: 'customPayment', title: 'Results', icon: 'ti-book', class: '' }
 ];
 
 @Component({

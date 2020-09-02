@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
-import { FindUserComponent } from './find-user.component';
+import { TetrisComponent } from './tetris.component';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
@@ -16,8 +16,8 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   declarations: [
-    FindUserComponent,
+    TetrisComponent,
   ],
   exports: [],
 })
-export class FindUserModule {}
+export class TetrisModule {}

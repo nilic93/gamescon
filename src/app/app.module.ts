@@ -9,7 +9,7 @@ import {AppComponent} from './app.component';
 
 import {SidebarModule} from './sidebar/sidebar.module';
 import {SharedModule} from './shared/shared.module';
-import {FindUserModule} from './find-user/find-user.module';
+import {TetrisModule} from './tetris/tetris.module';
 import {AuthModule} from './auth/auth.module';
 import {AuthService} from './auth/auth.service';
 import {StorageService} from './storage/storage.service'
@@ -20,6 +20,7 @@ import {CommonModule} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HTTP_INTERCEPTORS} from '@angular/common/http';
 import {HttpConfigInterceptor} from './interceptors/httpconfig.interceptor';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
     declarations: [
@@ -34,14 +35,15 @@ import {HttpConfigInterceptor} from './interceptors/httpconfig.interceptor';
         SidebarModule,
         SharedModule,
         CustomPaymentModule,
-        FindUserModule,
+        TetrisModule,
         AuthModule,
     ],
     providers: [AuthService,
         StorageService,
         {provide: APP_BASE_HREF, useValue: '/'},
         AuthGuard,
-        { provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true }
+        {provide: HTTP_INTERCEPTORS, useClass: HttpConfigInterceptor, multi: true},
+        {provide: LocationStrategy, useClass: HashLocationStrategy}
     ],
     bootstrap: [AppComponent],
 })

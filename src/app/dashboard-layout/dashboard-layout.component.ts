@@ -11,7 +11,7 @@ export class DashboardLayoutComponent implements OnInit {
 
   ngOnInit() {
     if (this.router.url === '/dashboard') {
-      this.router.navigate(['/dashboard', 'findUser'], { replaceUrl: true });
+      this.router.navigate(['/dashboard'], { replaceUrl: true });
     }
   }
 }
