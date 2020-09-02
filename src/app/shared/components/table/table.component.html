@@ -1,0 +1,100 @@
+<div>
+    <div class="header">
+        <div *ngIf="tableConfig.title">
+            <h4 class="title">{{ tableConfig.title + ' ' }}
+                <span class="header__records-count" *ngIf="tableConfig.totalRecordsCount">
+                    ({{tableConfig.totalRecordsCount | thousandSeparator}} record<span *ngIf="tableConfig.totalRecordsCount > 1">s</span>)
+                </span>
+            </h4>
+        </div>
+
+        <div class="pagination" *ngIf="shouldDisplayPagination()">
+            <div class="pagination__container">
+                <div class="pagination__dropdown">
+                    <div class="dropdown-toggle" data-toggle="dropdown">
+                        <b class="caret"></b>
+                        <span pagination__dropdown__value>{{tableConfig.pagination.perPage}}</span>
+                    </div>
+                    <ul class="dropdown-menu">
+                        <li><a (click)=onSelectRowsCountPerPage(50)>50</a></li>
+                        <li><a (click)=onSelectRowsCountPerPage(100)>100</a></li>
+                        <li><a (click)=onSelectRowsCountPerPage(250)>250</a></li>
+                        <li><a (click)=onSelectRowsCountPerPage(500)>500</a></li>
+                        <li><a (click)=onSelectRowsCountPerPage(1000)>1000</a></li>
+                    </ul>
+                </div>
+                <div class="pagination__per-page">
+                    per page
+                </div>
+                <button [disabled]="tableConfig.pagination.currentPage<=1" class="pagination__left-arrow" (click)="toPreviousPage()">
+                    <b class="ti-angle-left"></b>
+                </button>
+                <div class="pagination__pages-info">
+                    {{tableConfig.pagination.currentPage}} of {{tableConfig.pagination.pagesCount}}
+                </div>
+                <button [disabled]="tableConfig.pagination.currentPage >= tableConfig.pagination.pagesCount" class="pagination__right-arrow"
+                    (click)="toNextPage()">
+                    <b class="ti-angle-right"></b>
+                </button>
+
+            </div>
+        </div>
+
+        <div class="header__export-btn" *ngIf="shouldExportData()" (click)="onExportData()">
+            <div class="header__export-btn__icon"></div>
+            <div class="header__export-btn__text">
+                Export data
+            </div>
+        </div>
+    </div>
+    <table class="table table-striped flex-table" [ngStyle]="{ 'max-height': tableConfig.isScrollable ? tableConfig.maxHeight : '' }">
+        <thead>
+            <tr>
+                <div *ngIf="tableConfig.hasNumeration" class="numeration">
+                    <strong>#</strong>
+                </div>
+                <th *ngFor="let column of tableConfig.columns" (click)="onColumnHeaderClicked(column)" [ngStyle]="{ cursor: column.sort ? 'pointer' : '' }"
+                    [title]="column.sort ? 'Click here to sort...' : ''">
+                    <div>
+                        {{ column.columnHeader }}
+                    </div>
+                    <div class="sort-triangle" *ngIf="column.sort">
+                        <span *ngIf="column.sort.orderBy === currentSort.orderBy">
+                            {{currentSort.order === 'asc' ? '▼' : '▲'}}
+                        </span>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr [ngStyle]="{ cursor: tableConfig.isClickable ? 'pointer' : '' }" *ngFor="let row of tableConfig.rows; let rowIndex = index"
+                (click)="onRowClicked(row)">
+                <div *ngIf="tableConfig.hasNumeration" class="numeration-table">
+                    {{getRowNumber(rowIndex)}}
+                </div>
+                <td *ngFor="let col of tableConfig.columns" [title]="col.tooltip ? getTooltip(row, col) : ''">
+                    <div [ngClass]="getActionClass(col)" *ngIf="col.cellAction" (click)="onCellClicked(col, row)"></div>
+                    <span *ngIf="col.isCurrency">{{ getData(row, col) | euroCurrency }}</span>
+                    <span *ngIf="col.shouldBeMasked">{{ getData(row, col) | maskBankAccount }}</span>
+                    <span *ngIf="col.colorLabels" [ngClass]="getColorLabelClass(row, col)">
+                        {{ getData(row, col) }}
+                    </span>
+                    <span *ngIf="!col.colorLabels && !col.isCurrency && !col.shouldBeMasked && !col.cellAction">
+                        {{ getData(row, col) }}
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot *ngIf="tableConfig.hasFooter" class="footer">
+            <tr>
+                <div *ngIf="tableConfig.hasNumeration" class="numeration-table-sign">
+                    <span>&Sigma;</span>
+                </div>
+                <td *ngFor="let col of tableConfig.columns">
+                    <span *ngIf="col.isCurrency">{{ calculateSum(col) | euroCurrency }}</span>
+                </td>
+            </tr>
+        </tfoot>
+
+    </table>
+</div>

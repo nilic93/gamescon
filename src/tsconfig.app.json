@@ -1,0 +1,15 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "../out-tsc/app",
+    "module": "es6",
+    "baseUrl": "",
+    "types": ["jest"]
+  },
+  "exclude": [
+    "test.ts",
+    "**/*.spec.ts",
+    "**/environment.dev.ts",
+    "**/environment.prod.ts"
+  ]
+}
