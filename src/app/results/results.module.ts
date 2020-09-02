@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { PipesModule } from '../pipes/pipes.module';
+import {ResultsComponent} from './results.component';
 
 @NgModule({
   imports: [
@@ -12,8 +13,9 @@ import { PipesModule } from '../pipes/pipes.module';
     PipesModule
   ],
   declarations: [
+      ResultsComponent
   ],
   exports: [
   ]
 })
-export class CustomPaymentModule { }
+export class ResultsModule { }

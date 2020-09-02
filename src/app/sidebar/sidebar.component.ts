@@ -12,7 +12,7 @@ export interface RouteInfo {
 export const ROUTES: RouteInfo[] = [
   { path: 'home', title: 'Home', icon: 'ti-home', class: '' },
   { path: 'tetris', title: 'Tetris', icon: 'ti-tablet', class: '' },
-  { path: 'customPayment', title: 'Results', icon: 'ti-book', class: '' }
+  { path: 'results', title: 'Results', icon: 'ti-book', class: '' }
 ];
 
 @Component({

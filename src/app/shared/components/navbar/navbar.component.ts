@@ -36,7 +36,7 @@ export class NavbarComponent implements OnInit {
     const pathSegment = splitted[splitted.length - 1];
     const currentRoute = this.getRouteObject(pathSegment);
 
-    return currentRoute ? currentRoute.title : 'Dashboard';
+    return currentRoute ? currentRoute.title : 'GAMESCON';
   }
 
   getRouteObject(pathSegment) {
