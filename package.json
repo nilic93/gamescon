@@ -28,7 +28,7 @@
     "chartist": "0.9.4",
     "core-js": "2.4.1",
     "express": "4.15.3",
-    "jquery": "1.12.4",
+    "jquery": "3.5.0",
     "moment": "^2.22.2",
     "ngx-bootstrap": "^3.0.1",
     "rxjs": "^6.6.2",
