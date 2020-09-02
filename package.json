@@ -28,13 +28,13 @@
     "chartist": "0.9.4",
     "core-js": "2.4.1",
     "express": "4.15.3",
-    "jquery": "1.12.4",
+    "jquery": "3.5.1",
     "moment": "^2.22.2",
     "ngx-bootstrap": "^3.0.1",
     "rxjs": "^6.6.2",
     "tslib": "^2.0.0",
     "validator": "^10.8.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "0.11.1"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.1000.7",
@@ -44,11 +44,9 @@
     "@types/bootstrap": "3.3.32",
     "@types/chartist": "0.9.34",
     "@types/dotenv": "^4.0.3",
-    "@types/jest": "^22.1.1",
     "@types/jquery": "1.10.31",
     "@types/node": "^12.11.1",
     "@types/yargs": "^12.0.1",
-    "codelyzer": "^6.0.0",
     "dotenv": "^6.0.0",
     "ts-node": "4.1.0",
     "tslint": "~6.1.0",
